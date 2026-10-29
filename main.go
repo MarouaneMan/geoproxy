@@ -4,7 +4,6 @@ package main
 
 import (
 	"flag"
-	"io"
 	"log"
 	"net/http"
 	"os"
@@ -50,13 +49,6 @@ func newServer(cfg config) *http.Server {
 		Handler:           logRequests(mux),
 		ReadHeaderTimeout: 10 * time.Second,
 	}
-}
-
-// handleWMS is a placeholder until step 2 (WMS parsing).
-func handleWMS(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-	w.WriteHeader(http.StatusNotImplemented)
-	io.WriteString(w, "geoproxy: WMS not implemented yet\n")
 }
 
 // statusRecorder remembers the status code so we can log it.
